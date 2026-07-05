@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-body-text font-sans antialiased;
+    line-height: 1.5;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-dark-text;
+    line-height: 1.2;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply font-sans font-bold uppercase tracking-[0.12em] text-sm text-forest-mid;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 999px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #E8A045;
+  cursor: pointer;
+  border: 3px solid #FAF7F2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #E8A045;
+  cursor: pointer;
+  border: 3px solid #FAF7F2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Accordion smooth height transition */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease;
+}
+.accordion-content.open {
+  max-height: 500px;
+}
+
+/* Form focus glow */
+.form-input:focus {
+  border-color: #4A7C2F;
+  box-shadow: 0 0 0 3px rgba(74,124,47,0.15);
+  outline: none;
+}
